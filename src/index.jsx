@@ -11,11 +11,14 @@ class LatestCommitComponent extends React.Component {
       author: "",
       branch: "",
       date: "",
-      sha: ""
+      sha: "",
+      link: ""
     };
   }
 
   componentDidMount() {
+    // Replace this with your own repo
+    // https://api.github.com/repos/:owner/:repo/branches/master
     fetch(
       "https://api.github.com/repos/ta-dachi/eatsleepcode.tech/branches/master"
     )
@@ -26,7 +29,8 @@ class LatestCommitComponent extends React.Component {
             author: json.commit.author.login,
             branch: json.name,
             date: json.commit.commit.author.date,
-            sha: json.commit.sha
+            sha: json.commit.sha,
+            link: json._links.html
           });
         });
       })
@@ -42,6 +46,7 @@ class LatestCommitComponent extends React.Component {
         <div>{this.state.branch}</div>
         <div>{this.state.date}</div>
         <div>{this.state.sha}</div>
+        <div>{this.state.link}</div>
       </div>
     );
   }
