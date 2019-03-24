@@ -1,0 +1,83 @@
+{
+  "id": "946239f1-e26d-4e8e-be9c-489480e9b656",
+  "version": "2.0",
+  "name": "latest-commit",
+  "url": "http://127.0.0.1:5500",
+  "tests": [{
+    "id": "cc1dcf60-deff-4a80-b1e8-a97180629454",
+    "name": "Test",
+    "commands": [{
+      "id": "731648f3-bc96-4364-a7e6-fbfefdaf7861",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "3057c90c-cf23-430b-94d5-34f12b406639",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1856x995",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "04c95bb5-7062-4a52-9ce0-a05e8712ee82",
+      "comment": "",
+      "command": "click",
+      "target": "id=author",
+      "targets": [
+        ["id=author", "id"],
+        ["css=#author", "css:finder"],
+        ["xpath=//div[@id='author']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div", "xpath:idRelative"],
+        ["xpath=//div/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c9d0249f-c50b-45e9-aebf-b5099e4e315f",
+      "comment": "",
+      "command": "storeText",
+      "target": "id=author",
+      "targets": [],
+      "value": "_author"
+    }, {
+      "id": "be8fa2b6-b7ff-4127-a28c-6d9fa80e87ef",
+      "comment": "",
+      "command": "echo",
+      "target": "${_author}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ded26240-5aa7-402a-a94a-ffdeccb7a7fb",
+      "comment": "",
+      "command": "if",
+      "target": "${_author}===\"ta-dachi\"",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e5324b73-6810-43d9-9a32-f9270d5be908",
+      "comment": "",
+      "command": "echo",
+      "target": "${_author}!",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5b25b371-bf6b-4131-867e-57372e5dc6b6",
+      "comment": "",
+      "command": "end",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "1203ba76-e2d6-4060-8daf-3cbd71213c2e",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["http://127.0.0.1:5500/"],
+  "plugins": []
+}

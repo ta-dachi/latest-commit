@@ -12,43 +12,57 @@ class LatestCommitComponent extends React.Component {
       branch: "",
       date: "",
       sha: "",
-      link: ""
+      link: "",
+      error: null
     };
   }
 
   componentDidMount() {
     // Replace this with your own repo
-    // https://api.github.com/repos/:owner/:repo/branches/master
+    // https://api.github.com/repos/:owner/:repo/branches/maste
     fetch(
       "https://api.github.com/repos/ta-dachi/eatsleepcode.tech/branches/master"
     )
       .then(response => {
         response.json().then(json => {
           console.log(json);
-          this.setState({
-            author: json.commit.author.login,
-            branch: json.name,
-            date: json.commit.commit.author.date,
-            sha: json.commit.sha,
-            link: json._links.html
-          });
+          if (json.commit) {
+            this.setState({
+              author: json.commit.author.login,
+              branch: json.name,
+              date: json.commit.commit.author.date,
+              sha: json.commit.sha,
+              link: json._links.html
+            });
+          } else {
+            this.setState({
+              error: json.message
+            });
+          }
         });
       })
       .catch(error => {
+        this.setState({
+          error: error
+        });
         console.log(error);
       });
   }
 
   render() {
-    return (
+    const html = this.state.error ? (
+      <div id="error">{this.state.error}</div>
+    ) : (
       <div>
-        <div>{this.state.author}</div>
-        <div>{this.state.branch}</div>
-        <div>{this.state.date}</div>
-        <div>{this.state.sha}</div>
-        <div>{this.state.link}</div>
+        <div id="author">{this.state.author}</div>
+        <div id="branch">{this.state.branch}</div>
+        <div id="date">{this.state.date}</div>
+        <div id="sha">{this.state.sha}</div>
+        <div id="link">{this.state.link}</div>
       </div>
     );
+
+    return <div>{html}</div>;
   }
 }
 
